@@ -61,21 +61,21 @@ while True:
 cv2.destroyAllWindows()
 
 #Задание 4
-# output_file = 'output_video.mp4'
-# fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-# frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-# frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-# fps = cap.get(cv2.CAP_PROP_FPS)
-# out = cv2.VideoWriter(output_file, fourcc, fps, (frame_width , frame_height))
-#
-# while True:
-#     ret, frame = cap.read()
-#     if not ret:
-#         break
-#     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-#     out.write(frame)
-#
-# cv2.destroyAllWindows()
+output_file = 'output_video.mp4'
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+fps = cap.get(cv2.CAP_PROP_FPS)
+out = cv2.VideoWriter(output_file, fourcc, fps, (frame_width , frame_height))
+
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    out.write(frame)
+
+cv2.destroyAllWindows()
 
 #Задание 5
 cv2.namedWindow('img 1',cv2.WINDOW_NORMAL)
@@ -90,7 +90,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 #Задание 6
-web_cap = cv2.VideoCapture("http://192.168.1.68:8080/video")
+web_cap = cv2.VideoCapture("0")
 
 
 ret, frame = web_cap.read()
@@ -118,35 +118,35 @@ points = np.array([
 for line in points:
     cv2.polylines(frame, [line], isClosed=True, color=(0, 0, 255), thickness=2)
 
-cv2.imshow('Крестик', frame)
+cv2.imshow('Cross', frame)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 
 #Задание 7
-# web_cap = cv2.VideoCapture("http://192.168.1.68:8080/video")
-# output_file = 'output_webc.mp4'
-# fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-# frame_width = int(web_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-# frame_height = int(web_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-# fps = web_cap.get(cv2.CAP_PROP_FPS)
-# out = cv2.VideoWriter(output_file, fourcc, fps, (frame_width , frame_height))
-#
-# while True:
-#     ret, frame = web_cap.read()
-#     if not ret:
-#         print("Не удалось получить кадр")
-#         break
-#     out.write(frame)
-#     cv2.imshow('Запись', frame)
-#     if cv2.waitKey(1) & 0xFF == 27:
-#         break
-#
-# cv2.destroyAllWindows()
+web_cap = cv2.VideoCapture("0")
+output_file = 'output_webc.mp4'
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+frame_width = int(web_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+frame_height = int(web_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+fps = web_cap.get(cv2.CAP_PROP_FPS)
+out = cv2.VideoWriter(output_file, fourcc, fps, (frame_width , frame_height))
+
+while True:
+    ret, frame = web_cap.read()
+    if not ret:
+        print("Не удалось получить кадр")
+        break
+    out.write(frame)
+    cv2.imshow('Rec', frame)
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
+
+cv2.destroyAllWindows()
 
 #Задание 8
-web_cap = cv2.VideoCapture("http://192.168.1.68:8080/video")
+web_cap = cv2.VideoCapture("0")
 
 ret, frame = web_cap.read()
 if not ret:
@@ -172,12 +172,29 @@ points = np.array([
     [center_x - 125, center_y - 15]
 ], np.int32)
 
-pixel_color = frame[center_y, center_x]
-pixel_color = pixel_color[::-1]
-pixel_color = tuple(map(int, pixel_color))
-cv2.fillPoly(frame, [points], pixel_color)
+pixel_color = img1[center_y, center_x]
 
-cv2.imshow('Крестик', frame)
+color_max = [0,0,0]
+for i in range(3):
+    if max(pixel_color) == pixel_color[i]:
+        color_max[i] = 255
+
+cv2.fillPoly(img1, [points], color_max)
+
+cv2.imshow('Cross', frame)
 cv2.waitKey(0)
 
+cv2.destroyAllWindows()
+
+#Задание 9
+web_cap = cv2.VideoCapture("http://192.168.1.68:8080/video")
+
+
+ret, frame = web_cap.read()
+if not ret:
+    print("Не удалось получить кадр")
+
+cv2.imshow('IP cam', frame)
+
+cv2.waitKey(0)
 cv2.destroyAllWindows()
