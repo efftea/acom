@@ -172,14 +172,14 @@ points = np.array([
     [center_x - 125, center_y - 15]
 ], np.int32)
 
-pixel_color = img1[center_y, center_x]
+pixel_color = frame[center_y, center_x]
 
 color_max = [0,0,0]
 for i in range(3):
     if max(pixel_color) == pixel_color[i]:
         color_max[i] = 255
 
-cv2.fillPoly(img1, [points], color_max)
+cv2.fillPoly(frame, [points], color_max)
 
 cv2.imshow('Cross', frame)
 cv2.waitKey(0)
@@ -190,11 +190,14 @@ cv2.destroyAllWindows()
 web_cap = cv2.VideoCapture("http://192.168.1.68:8080/video")
 
 
-ret, frame = web_cap.read()
-if not ret:
-    print("Не удалось получить кадр")
-
-cv2.imshow('IP cam', frame)
+while True:
+    ret, frame = web_cap.read()
+    if not ret:
+        print("Не удалось получить кадр")
+        break
+    cv2.imshow('Rec', frame)
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
