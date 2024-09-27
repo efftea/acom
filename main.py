@@ -29,9 +29,10 @@ while True:
     if not ret:
         print("Не удалось получить кадр")
         break
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    frame = cv2.inRange(frame, (0, 100, 100), (30, 255, 255))
-    cv2.imshow('Rec', frame)
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    red_mask = cv2.inRange(hsv, (0, 100, 100), (30, 255, 255))
+    red_only = cv2.bitwise_and(frame, frame, mask=red_mask)
+    cv2.imshow('Rec', red_only)
     if cv2.waitKey(1) & 0xFF == 27:
         break
 
@@ -50,9 +51,15 @@ while True:
 
     hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     red_frame = cv2.inRange(hsv_frame, (0, 100, 100), (30, 255, 255))
+
     kernel = np.ones((5, 5), np.uint8)
+    dilate = cv2.dilate(red_frame, kernel, iterations=1)
+    erode = cv2.erode(dilate, kernel, iterations=1)
+    cv2.imshow('Close', erode)
+
     erode = cv2.erode(red_frame, kernel, iterations=1)
     dilate = cv2.dilate(erode, kernel, iterations=1)
+    cv2.imshow('Open', erode)
 
 
     moment = cv2.moments(erode)
@@ -64,9 +71,9 @@ while True:
     (contours, _) = cv2.findContours(erode.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     for countour in contours:
         (x, y, w, h) = cv2.boundingRect(countour)
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 4)
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 0), 4)
 
-    cv2.imshow('Rec', frame)
+    cv2.imshow('Moments', frame)
 
     if cv2.waitKey(1) & 0xFF == 27:
         break
