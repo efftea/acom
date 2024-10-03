@@ -59,12 +59,11 @@ while True:
     if (moment["m00"] != 0):
         print(f"Площадь: {moment['m00']}")
         print(f"Моменты 1 порядка: {moment['m01']}, {moment['m10']}")
-        xc = int(moment['m10'] / moment['m00'])
-        yc = int(moment['m01'] / moment['m00'])
-    (contours, _) = cv2.findContours(erode.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    for countour in contours:
-        (x, y, w, h) = cv2.boundingRect(countour)
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 4)
+        x = int(moment['m10'] / moment['m00'])
+        y = int(moment['m01'] / moment['m00'])
+        w = int(np.sqrt(moment['m00']))
+        h = int(moment['m00']//w)
+        cv2.rectangle(frame, (x - w//2, y - h//2), (x + w//2, y + h//2), (0, 0, 255), 4)
 
     cv2.imshow('Rec', frame)
 
