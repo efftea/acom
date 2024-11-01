@@ -1,74 +1,52 @@
-from fileinput import filename
-from sys import flags
 import numpy as np
 import cv2
 
+def gauss(x,y,a,b,om):
+    return (1/(2*np.pi*(om**2))) * np.exp(-((((x-a)**2)+((y-b)**2))/(2*(om**2))))
 
-# Задание 1
-web_cap = cv2.VideoCapture("http://192.168.1.68:8080/video")
+def blur(blurImg, size, om):
+    kernelMatrix = np.empty((size, size))
+    a = (size)//2
+    b = (size)//2
+    sum = 0
+    for i in range(size):
+        for j in range(size):
+            kernelMatrix[i][j] = gauss(i,j,a,b,om)
+            sum += kernelMatrix[i][j]
 
-while True:
-    ret, frame = web_cap.read()
-    if not ret:
-        print("Не удалось получить кадр")
-        break
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    cv2.imshow('Rec', frame)
-    if cv2.waitKey(1) & 0xFF == 27:
-        break
+    print(kernelMatrix)
+    print(sum)
+    kernelMatrix /= sum
+    print(kernelMatrix)
+    for i in range(size):
+        for j in range(size):
+            sum += kernelMatrix[i][j]
+    print(sum)
 
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+    n_img = blurImg.copy()
 
-
-#Задание 2
-web_cap = cv2.VideoCapture("http://192.168.1.68:8080/video")
-
-while True:
-    ret, frame = web_cap.read()
-    if not ret:
-        print("Не удалось получить кадр")
-        break
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    frame = cv2.inRange(frame, (0, 100, 100), (30, 255, 255))
-    cv2.imshow('Rec', frame)
-    if cv2.waitKey(1) & 0xFF == 27:
-        break
-
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+    for i in range(0, blurImg.shape[0]):
+        for j in range(0,  blurImg.shape[1]):
+            val=0
+            for k in range(i if (blurImg.shape[0]-i >= size) else i-(size-((blurImg.shape[0]-i)%size)), (i+size) if (blurImg.shape[0]-i >= size) else i+((blurImg.shape[0]-i)%size)):
+                for l in range(j if (blurImg.shape[1]-j >= size) else j-(size-((blurImg.shape[1]-j)%size)), (j+size) if (blurImg.shape[1]-j >= size) else j+((blurImg.shape[1]-j)%size)):
+                    val += blurImg[k,l] * kernelMatrix[(k-i) if (blurImg.shape[0]-i >= size) else (k - (i-(size-((blurImg.shape[0]-i)%size)))), (l - j) if (blurImg.shape[1]-j >= size) else (l - (j-(size-((blurImg.shape[1]-j)%size))))]
+                    # print(f"{i}, {j}, {k}, {l}")
+            n_img[i, j] = val
 
 
-#Задание 3,4,5
-web_cap = cv2.VideoCapture(r'http://192.168.1.68:8080/video')
+    return n_img
 
-while True:
-    ret, frame = web_cap.read()
-    if not ret:
-        print("Не удалось получить кадр")
-        break
-
-    hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    red_frame = cv2.inRange(hsv_frame, (0, 100, 100), (30, 255, 255))
-    kernel = np.ones((5, 5), np.uint8)
-    erode = cv2.erode(red_frame, kernel, iterations=1)
-    dilate = cv2.dilate(erode, kernel, iterations=1)
-
-
-    moment = cv2.moments(erode)
-    if (moment["m00"] != 0):
-        print(f"Площадь: {moment['m00']}")
-        print(f"Моменты 1 порядка: {moment['m01']}, {moment['m10']}")
-        x = int(moment['m10'] / moment['m00'])
-        y = int(moment['m01'] / moment['m00'])
-        w = int(np.sqrt(moment['m00']))
-        h = int(moment['m00']//w)
-        cv2.rectangle(frame, (x - w//2, y - h//2), (x + w//2, y + h//2), (0, 0, 255), 4)
-
-    cv2.imshow('Rec', frame)
-
-    if cv2.waitKey(1) & 0xFF == 27:
-        break
+img = cv2.imread("2375-202111021051505426.png",cv2.IMREAD_GRAYSCALE)
+img1 = cv2.imread("2375-202111021051505426.png",cv2.IMREAD_GRAYSCALE)
+img = cv2.resize(img, (480, 600))
+img1 = cv2.resize(img1, (480, 600))
+size = int(input())
+om = int(input())
+cv2.imshow("not_gray", img)
+cv2.imshow("not_blured", img1)
+cv2.imshow("blured", blur(img1, size, om))
+cv2.imshow("blured2", cv2.GaussianBlur(img1,(size,size),om))
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
