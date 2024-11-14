@@ -1,92 +1,42 @@
 import numpy as np
 import cv2
 
-def kanny(gauss):
-    border = np.zeros(gauss.shape)
-    lengthVec = np.zeros(gauss.shape)
-    color = np.zeros(gauss.shape)
-    maxLen = np.max(lengthVec)
-    x = 0
-    y = 0
-    for i in range(1, len(gauss)-1):
-        for j in range(1, len(gauss[0])-1):
-            GrX = (gauss[i + 1][j + 1] - gauss[i - 1][j - 1] + gauss[i + 1][j - 1] - gauss[i - 1][j + 1] + 2 * (gauss[i + 1][j] - gauss[i - 1][j]))
-            GrY = (gauss[i + 1][j + 1] - gauss[i - 1][j - 1] + gauss[i - 1][j + 1] - gauss[i + 1][j - 1] + 2 * (gauss[i][j + 1] - gauss[i][j - 1]))
-            lengthVec[i][j] = np.sqrt(GrX ** 2 + GrY ** 2)
-            tg = np.arctan(GrY / GrX)
+cap = cv2.VideoCapture("ЛР4_main_video.mov", cv2.CAP_ANY)
+ret, frame = cap.read()
 
-            if (GrX > 0 and GrY < 0 and tg < -2.414) or (GrX < 0 and GrY < 0 and tg > 2.414):
-                color[i][j] = 0
-                x = 0
-                y = -1
-            elif (GrX > 0 and GrY < 0 and tg < -0.414):
-                color[i][j] = 1
-                x = 1
-                y = -1
-            elif (GrX > 0 and GrY < 0 and tg > -0.414) or (GrX > 0 and GrY > 0 and tg > 0.414):
-                color[i][j] = 2
-                x = 1
-                y = 0
-            elif (GrX > 0 and GrY > 0 and tg < 2.414):
-                color[i][j] = 3
-                x = 1
-                y = 1
-            elif (GrX > 0 and GrY > 0 and tg > 2.414) or (GrX < 0 and GrY > 0 and tg < -2.414):
-                color[i][j] = 4
-                x = 0
-                y = 1
-            elif (GrX < 0 and GrY > 0 and tg < -0.414):
-                color[i][j] = 5
-                x = -1
-                y = 1
-            elif (GrX < 0 and GrY > 0 and tg > -0.414) or (GrX < 0 and GrY < 0 and tg < 0.414):
-                color[i][j] = 6
-                x = -1
-                y = 0
-            elif (GrX < 0 and GrY < 0 and tg < 2.414):
-                color[i][j] = 7
-                x = -1
-                y = -1
+w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-            if (lengthVec[i][j]>lengthVec[i+x][j+y] and lengthVec[i][j]>lengthVec[i-x][j-y]):
-                border[i][j] = 255
-            else:
-                border[i][j] = 0
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+video_writer = cv2.VideoWriter("output.mp4", fourcc, 25, (w, h))
 
-    cv2.imshow("lengths", lengthVec)
-    cv2.imshow("color", color)
-    cv2.imshow("border", border)
+ret,frame=cap.read()
+gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+blured_one = cv2.GaussianBlur(gray, (7, 7), 100)
 
-    low_level = maxLen // 25
-    high_level = maxLen // 10
-    for x in range(1, (len(gauss) - 1)):
-        for y in range(1, len(gauss[0]) - 1):
-            if (border[x][y] == 255):
-                if (lengthVec[x][y] < low_level):
-                    border[x][y] = 0
+while True:
+    ret, frame = cap.read()
+    if not (ret):
+        break
 
-            if (border[x][y] == 255):
-                if (lengthVec[x][y] <= high_level):
-                    if (border[x - 1][y - 1] == 255 or border[x - 1][y] == 255 or border[x - 1][y + 1] == 255 or border[x][y + 1] == 255 or border[x + 1][y + 1] == 255 or border[x + 1][y] == 255 or border[x + 1][y - 1] == 255 or border[x][y - 1] == 255):
-                        border[x][y] = 255
-                    else:
-                        border[x][y] = 0
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    blured = cv2.GaussianBlur(gray, (7, 7), 100)
 
-    cv2.imshow("borders filtered", border)
+    frame_diff = cv2.absdiff(blured_one, blured)
 
-img = cv2.imread("9349507864_4e82203bf8_b.jpg",cv2.IMREAD_GRAYSCALE)
+    thrash = cv2.threshold(frame_diff, 50, 255, cv2.THRESH_BINARY)[1]
 
-img = cv2.resize(img, (480, 600))
+    contours,_=cv2.findContours(thrash,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
 
-size = int(input("Gauss Size: "))
-om = int(input("Gauss Sigma: "))
+    try:
+        cnt = contours[0]
+        area = cv2.contourArea(cnt)
+        if area > 50:
+            video_writer.write(frame)
+            print("Распознано")
+    except:
+        print("Не распознано")
+    blured_one = blured
 
-gauss = cv2.GaussianBlur(img, (size, size), om)
-
-kanny(gauss)
-
-cv2.imshow("gray", img)
-cv2.imshow("blured", gauss)
-
-cv2.waitKey(0)
+cap.release()
 cv2.destroyAllWindows()
