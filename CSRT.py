@@ -2,6 +2,7 @@ import time
 import cv2
 import numpy as np
 
+
 cap = cv2.VideoCapture('./Видосы/1.mp4')
 fourcc = cv2.VideoWriter.fourcc(*'XVID')
 

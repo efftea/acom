@@ -10,6 +10,7 @@ start = time.time()
 
 ret, frame = cap.read()
 
+
 frame = cv2.resize(frame, (1280, 720))
 
 

@@ -2,6 +2,7 @@ import time
 import cv2
 import numpy as np
 
+
 def gauss(x,y,a,b,om):
     return (1/(2*np.pi*(om**2))) * np.exp(-((((x-a)**2)+((y-b)**2))/(2*(om**2))))
 
