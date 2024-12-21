@@ -8,6 +8,40 @@ import cv2
 
 tes.pytesseract.tesseract_cmd = (r"C:\Users\DaaNIK\Desktop\dataset1\tesseract.exe")
 
+def augmentation(ds_dir):
+    images = os.listdir(f"{ds_dir}")
+    print(images)
+    for name in images:
+        if name.endswith(('.png', '.jpg', '.jpeg')):
+            image = cv2.imread(f"{ds_dir}/{name}")
+            for angle in range(-20,21):
+                print(name)
+                # Получение размеров изображения
+                (h, w) = image.shape[:2]
+
+                # Определение центра изображения
+                center = (w // 2, h // 2)
+
+                # Создание матрицы поворота
+                M = cv2.getRotationMatrix2D(center, angle, 1.0)
+
+                # Вычисление новой ширины и высоты, чтобы избежать обрезки
+                cos = np.abs(M[0, 0])
+                sin = np.abs(M[0, 1])
+
+                # Новые размеры
+                new_w = int((h * sin) + (w * cos))
+                new_h = int((h * cos) + (w * sin))
+
+                # Корректировка матрицы поворота для смещения центра
+                M[0, 2] += new_w / 2 - center[0]
+                M[1, 2] += new_h / 2 - center[1]
+
+                # Поворот изображения с новыми размерами
+                rotated_image = cv2.warpAffine(image, M, (new_w, new_h))
+                str_im = str(name[:-4]) + "+" + str(angle)
+                cv2.imwrite(f"dataset2/{str_im}.jpg", rotated_image)
+
 def load_labels_from_file(file_path):
     labels = {}
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -34,6 +68,9 @@ def test_recognition(rec_type, val_type, ds_dir):
         for name in images:
             if name.endswith(('.png', '.jpg', '.jpeg')):
                 img_number = os.path.splitext(name)[0]
+                plus_index = img_number.find("+")
+                if plus_index != -1:
+                    img_number = img_number[:plus_index]
                 img_path = os.path.join(ds_dir, name)
                 img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
                 print(f"{name}")
@@ -49,6 +86,9 @@ def test_recognition(rec_type, val_type, ds_dir):
         for name in images:
             if name.endswith(('.png', '.jpg', '.jpeg')):
                 img_number = os.path.splitext(name)[0]
+                plus_index = img_number.find("+")
+                if plus_index != -1:
+                    img_number = img_number[:plus_index]
                 img_path = os.path.join(ds_dir, name)
                 img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
                 print(f"{name}")
@@ -102,4 +142,5 @@ def test_recognition(rec_type, val_type, ds_dir):
     reswriter.close()
 
 # Пример вызова функции
-test_recognition("augment", "num", "dataset")
+# test_recognition("augment", "num", "dataset")
+augmentation("dataset")
