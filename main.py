@@ -3,6 +3,7 @@ import os
 import pytesseract as tes
 from jiwer import wer
 from collections import Counter
+import easyocr
 import cv2
 import re
 
@@ -117,14 +118,27 @@ def test_recognition(rec_type, val_type, ds_dir):
                 # Запоминаем текст для текущего изображения
                 res[img_number] = clean_text(str(most_common_text).replace("\n", ""))
 
+    elif rec_type == "easyOCR":
+        reader = easyocr.Reader(['en', 'ru'], gpu=True)
+        for name in images:
+            if name.endswith(('.png', '.jpg', '.jpeg')):
+                img_path = os.path.join(ds_dir, name)
+                print(name)
+                results = reader.readtext(img_path, detail=0, paragraph=True)
 
+                text_combined = ' '.join(results).replace("\n", "")
+
+
+                res[os.path.splitext(name)[0]] = clean_text(text_combined)
 
     count_correct = 0
     match_count = 0
+    total_characters_in_labels = 0
+    col = 0
     # Оценка точности
     for number in res:
         recognized_text = res.get(number, "")
-
+        col+=1
         plus_index = number.find("+")
         if plus_index != -1:
             number = number[:plus_index]
@@ -134,6 +148,7 @@ def test_recognition(rec_type, val_type, ds_dir):
             number = number[:kom_index]
         print(number)
         correct_label = labels[number]
+        total_characters_in_labels += len(correct_label)
         reswriter.write(f'{recognized_text} : {correct_label}\n')
 
         # Если необходимо оценить точность или количество совпадений
@@ -144,12 +159,11 @@ def test_recognition(rec_type, val_type, ds_dir):
             match_count += character_match_count(correct_label, recognized_text)
 
     if val_type == "accuracy":
-        accuracy_score = count_correct / len(labels) if labels else 0
+        accuracy_score = count_correct / col
         reswriter.write(f"accuracy: {accuracy_score:.4f}\n")
 
     elif val_type == "num":
-        total_characters_in_labels = sum(len(label) for label in labels.values())
-        average_matches_per_label = match_count / total_characters_in_labels if total_characters_in_labels > 0 else 0
+        average_matches_per_label = match_count / total_characters_in_labels
         reswriter.write(f"Среднее количество совпадающих символов на метку: {average_matches_per_label:.4f}\n")
 
     reswriter.close()
@@ -157,4 +171,4 @@ def test_recognition(rec_type, val_type, ds_dir):
 
 # Пример вызова функции
 # augmentation("dataset")
-test_recognition("str", "num", "dataset2")
+test_recognition("easyOCR", "num", "dataset2")

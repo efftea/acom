@@ -1,7 +1,7 @@
 semnahorg podmnace : земляного родилась
  poate : земляного родилась
 smaanon pentre : земляного родилась
- pott : земляного родилась
+7 pott : земляного родилась
  : земляного родилась
  : земляного родилась
  pog woe  : земляного родилась
@@ -19,9 +19,9 @@ pe nthers perta co : земляного родилась
  : земляного родилась
 penang pean : земляного родилась
 semnahorg pommnac : земляного родилась
-mnahorg poamnac : земляного родилась
+3mnahorg poamnac : земляного родилась
 npo poamiacr : земляного родилась
-n  poamacp : земляного родилась
+n 0 poamacp : земляного родилась
 re o poammace : земляного родилась
 poamnace navoro : земляного родилась
 popwnaceve  : земляного родилась
@@ -33,9 +33,9 @@ ee p oe : земляного родилась
 semnahorg poamacpsee : земляного родилась
  : земляного родилась
 semnahor poamacbeis : земляного родилась
-emnahorg poamacb : земляного родилась
-emnahorg poamacnre : земляного родилась
-emnahoro poamacbeh eeoss : земляного родилась
+3emnahorg poamacb : земляного родилась
+3emnahorg poamacnre : земляного родилась
+3emnahoro poamacbeh eeoss : земляного родилась
 me o poammac ee : земляного родилась
 npon poav oca : земляного родилась
 ene aoea : земляного родилась
@@ -52,7 +52,7 @@ notgens : охотно нанял
  : охотно нанял
 oxo h hf : охотно нанял
  : охотно нанял
-xoth h : охотно нанял
+xoth h9 : охотно нанял
 oxothg chay : охотно нанял
 oxothg gha : охотно нанял
  : охотно нанял
@@ -76,7 +76,7 @@ ha othot : охотно нанял
 ey ha : охотно нанял
  : охотно нанял
 ronot ho hay : охотно нанял
-ot hogfahjy : охотно нанял
+ot hogfah4jy : охотно нанял
  : охотно нанял
  : охотно нанял
  : охотно нанял
@@ -84,8 +84,8 @@ ake pact : croaked растаял
 aod paca : croaked растаял
 actaan sap p : croaked растаял
 keacd pacsan : croaked растаял
-actaan  : croaked растаял
-actaa  : croaked растаял
+actaan 05 : croaked растаял
+actaa 005 : croaked растаял
  : croaked растаял
  : croaked растаял
  : croaked растаял
@@ -93,8 +93,8 @@ actaa  : croaked растаял
  : croaked растаял
 oak ef pacta : croaked растаял
  : croaked растаял
-sak ed pactantt a : croaked растаял
-ak  patann se fe : croaked растаял
+s0ak ed pact4antt a : croaked растаял
+ak 4 patann se fe : croaked растаял
 oak y pactaanene se fe : croaked растаял
 ke df pactaan : croaked растаял
 ce ien te ales fa : croaked растаял
@@ -103,8 +103,8 @@ pehepesayne : croaked растаял
  : croaked растаял
 oaked pact ant : croaked растаял
 emg oaroaked pact a : croaked растаял
-roaked no : croaked растаял
-reaked no : croaked растаял
+2roaked no : croaked растаял
+0reaked no : croaked растаял
  : croaked растаял
 eraed ne : croaked растаял
  : croaked растаял
@@ -112,7 +112,7 @@ eraed ne : croaked растаял
  : croaked растаял
  : croaked растаял
  : croaked растаял
-faked pact : croaked растаял
+f0aked pact : croaked растаял
  : croaked растаял
 croaked pact aynr : croaked растаял
 croaked pact peot a : croaked растаял
@@ -141,7 +141,7 @@ spy ey cloudlesg : дружбу cloudless
  : дружбу cloudless
  : дружбу cloudless
  : дружбу cloudless
-spy y cloudlesg : дружбу cloudless
+spy 6y cloudlesg : дружбу cloudless
 apy ey cloudlesg : дружбу cloudless
 wo : дружбу cloudless
 sy : дружбу cloudless
@@ -162,51 +162,51 @@ se : дружбу cloudless
 gy : дружбу cloudless
 yy : дружбу cloudless
 gy : дружбу cloudless
-aein sesonach : застыло безопасно
-ai sesonagyo : застыло безопасно
+3aein0 sesonach : застыло безопасно
+3a6i70 sesonagyo : застыло безопасно
  : застыло безопасно
-m  nacyo : застыло безопасно
-poe siz oe nacyo : застыло безопасно
-piz nacyo : застыло безопасно
- : застыло безопасно
- : застыло безопасно
+2m710 6 30nacyo : застыло безопасно
+poe siz0 oe 20nacyo : застыло безопасно
+7piz0 630nacyo : застыло безопасно
  : застыло безопасно
  : застыло безопасно
  : застыло безопасно
-aeino senach : застыло безопасно
  : застыло безопасно
-cn seznachee a   oe : застыло безопасно
-im sesonachoee se ee : застыло безопасно
-mym  enachoen i he : застыло безопасно
-in sesonacho : застыло безопасно
-icp  sesonacne : застыло безопасно
-pen pd conoco : застыло безопасно
- ys pesonacua : застыло безопасно
  : застыло безопасно
-m ej n enach : застыло безопасно
- eonact : застыло безопасно
+3aeino se30nach : застыло безопасно
+ : застыло безопасно
+39cn6100 sez0nachee a   oe : застыло безопасно
+im100 sesonachoee se ee : застыло безопасно
+my32m 510 e30nachoen i he : застыло безопасно
+6in0 sesonacho : застыло безопасно
+3i7cp6 40 sesonacne : застыло безопасно
+pen 6pd conoco : застыло безопасно
+30670 ys pesonacua : застыло безопасно
+ : застыло безопасно
+3m ej n0 6e30nach : застыло безопасно
+ 6eonact : застыло безопасно
 pn gesonact : застыло безопасно
 ecm gesonact : застыло безопасно
-jonact og  : застыло безопасно
+jonact og 7 : застыло безопасно
 a a : застыло безопасно
 a win ss : застыло безопасно
 zacmuin er : застыло безопасно
-acmbl : застыло безопасно
+3acmbl : застыло безопасно
  : застыло безопасно
 acme s : застыло безопасно
-m i n enachog ss ee : застыло безопасно
+390m i n0 6e30nachog ss ee : застыло безопасно
  : застыло безопасно
-m i  ezonachee : застыло безопасно
-cm  geznach : застыло безопасно
-ee acm   eonachse : застыло безопасно
- fdcm ej  enachee : застыло безопасно
-i eonach    : застыло безопасно
+39m i 90 6ezonachee : застыло безопасно
+39cm4 70 gez0nach : застыло безопасно
+ee a39cm 4 90 6e3onachse : застыло безопасно
+ fd39cm ej 90 6e30nachee : застыло безопасно
+i 6e3onach   9 : застыло безопасно
 a ses : застыло безопасно
  cent : застыло безопасно
 eenuyuu mwy : величии лишил
 eeruway man : величии лишил
 een ny : величии лишил
-feeny  pyera  : величии лишил
+feeny 144 pyera  : величии лишил
 peery ar : величии лишил
 feenunuy my : величии лишил
  : величии лишил
@@ -216,10 +216,10 @@ feenunuy my : величии лишил
  : величии лишил
 eenuyuu muy : величии лишил
  : величии лишил
-enuyuu muyut  : величии лишил
-enuyuu wyes tt : величии лишил
-enuyuy mutu : величии лишил
-enuyuu ny : величии лишил
+6enuyuu muyut  : величии лишил
+6enuyuu wyes tt : величии лишил
+6enuyuy mutu : величии лишил
+6enuyuu ny : величии лишил
 jeenuvuy et : величии лишил
 jeenuwuy mein : величии лишил
 jeenusuy mein : величии лишил
@@ -240,7 +240,7 @@ eenuuuu ay : величии лишил
 eenudul muy ee oso : величии лишил
 ms eeeenudul nw ytt ee re : величии лишил
 ee geegenuduu mwyeo oe : величии лишил
-genusud mwy  ae : величии лишил
+genusud mwy 7 ae : величии лишил
 ecru nuiso : величии лишил
 ecru nun : величии лишил
 ce nuwsun : величии лишил
@@ -248,8 +248,8 @@ ake pact : croaked растаял
 aod paca : croaked растаял
 actaan sap p : croaked растаял
 keacd pacsan : croaked растаял
-actaan  : croaked растаял
-actaa  : croaked растаял
+actaan 05 : croaked растаял
+actaa 005 : croaked растаял
  : croaked растаял
  : croaked растаял
  : croaked растаял
@@ -257,8 +257,8 @@ actaa  : croaked растаял
  : croaked растаял
 oak ef pacta : croaked растаял
  : croaked растаял
-sak ed pactantt a : croaked растаял
-ak  patann se fe : croaked растаял
+s0ak ed pact4antt a : croaked растаял
+ak 4 patann se fe : croaked растаял
 oak y pactaanene se fe : croaked растаял
 ke df pactaan : croaked растаял
 ce ien te ales fa : croaked растаял
@@ -267,8 +267,8 @@ pehepesayne : croaked растаял
  : croaked растаял
 oaked pact ant : croaked растаял
 emg oaroaked pact a : croaked растаял
-roaked no : croaked растаял
-reaked no : croaked растаял
+2roaked no : croaked растаял
+0reaked no : croaked растаял
  : croaked растаял
 eraed ne : croaked растаял
  : croaked растаял
@@ -276,7 +276,7 @@ eraed ne : croaked растаял
  : croaked растаял
  : croaked растаял
  : croaked растаял
-faked pact : croaked растаял
+f0aked pact : croaked растаял
  : croaked растаял
 croaked pact aynr : croaked растаял
 croaked pact peot a : croaked растаял
@@ -287,7 +287,7 @@ et encroaked pact on : croaked растаял
 sancroaked jaci : croaked растаял
 got oh baw ay : Вот он ваш знак
 oor zena ea : Вот он ваш знак
- abe ele ear : Вот он ваш знак
+6 abe ele ear : Вот он ваш знак
 fe ae ee  : Вот он ваш знак
 oor ees  : Вот он ваш знак
  : Вот он ваш знак
@@ -303,33 +303,33 @@ bot oh baw mayone sins etre oi : Вот он ваш знак
 bot oh bay hay : Вот он ваш знак
 bot oh bay ag : Вот он ваш знак
 por oh bay han : Вот он ваш знак
-p oh bay hog : Вот он ваш знак
+p07 oh bay hog : Вот он ваш знак
 leor oh bay hon : Вот он ваш знак
 got oh baly shay : Вот он ваш знак
 got oh baw say : Вот он ваш знак
-ha  ou paw ke : Вот он ваш знак
- gue onan : Вот он ваш знак
-on bal hakkeeoe : Вот он ваш знак
+3ha  ou paw ke : Вот он ваш знак
+00 gue onan : Вот он ваш знак
+on bal 3hakkeeoe : Вот он ваш знак
 ot bau shak : Вот он ваш знак
  : Вот он ваш знак
- eal hakceos al : Вот он ваш знак
- paul hak : Вот он ваш знак
+4 eal hakceos al : Вот он ваш знак
+ paul 3hak : Вот он ваш знак
  : Вот он ваш знак
  : Вот он ваш знак
  : Вот он ваш знак
-pothball a : Вот он ваш знак
+pothball 34a4 : Вот он ваш знак
  : Вот он ваш знак
 got oh bal sharys ro eee : Вот он ваш знак
-shar h balborar es i : Вот он ваш знак
+shar 0h balborar es i : Вот он ваш знак
 shakeg oh balbo : Вот он ваш знак
-shak oh baulbogaas ne as : Вот он ваш знак
-shan oh bawg : Вот он ваш знак
- gunk shox : Вот он ваш знак
+shak1 oh baulbogaas ne as : Вот он ваш знак
+shan1 oh bawg : Вот он ваш знак
+20 gunk shox : Вот он ваш знак
 oo oh ball shar : Вот он ваш знак
 eenuyuu mwy : величии лишил
 eeruway man : величии лишил
 een ny : величии лишил
-feeny  pyera  : величии лишил
+feeny 144 pyera  : величии лишил
 peery ar : величии лишил
 feenunuy my : величии лишил
  : величии лишил
@@ -339,10 +339,10 @@ feenunuy my : величии лишил
  : величии лишил
 eenuyuu muy : величии лишил
  : величии лишил
-enuyuu muyut  : величии лишил
-enuyuu wyes tt : величии лишил
-enuyuy mutu : величии лишил
-enuyuu ny : величии лишил
+6enuyuu muyut  : величии лишил
+6enuyuu wyes tt : величии лишил
+6enuyuy mutu : величии лишил
+6enuyuu ny : величии лишил
 jeenuvuy et : величии лишил
 jeenuwuy mein : величии лишил
 jeenusuy mein : величии лишил
@@ -363,7 +363,7 @@ eenuuuu ay : величии лишил
 eenudul muy ee oso : величии лишил
 ms eeeenudul nw ytt ee re : величии лишил
 ee geegenuduu mwyeo oe : величии лишил
-genusud mwy  ae : величии лишил
+genusud mwy 7 ae : величии лишил
 ecru nuiso : величии лишил
 ecru nun : величии лишил
 ce nuwsun : величии лишил
@@ -372,12 +372,12 @@ coery kop : серьги корону
 cosry kop : серьги корону
 ceory kopovy : серьги корону
 soery kopoy : серьги корону
-soary kopovy : серьги корону
-cory kopovy : серьги корону
+soary kopov7y : серьги корону
+cory kopov7y : серьги корону
 sry kopowy : серьги корону
 aeery kopowy : серьги корону
-ry kopowy : серьги корону
-bery kopory : серьги корону
+6ry kopowy : серьги корону
+be6ry kopory : серьги корону
 cepprn wor : серьги корону
 ery kopohy : серьги корону
 cepern op : серьги корону
@@ -409,26 +409,26 @@ cepprv nor : серьги корону
 ceppr ke : серьги корону
 cepprv we : серьги корону
  : гидов лавки
-  bl : гидов лавки
-   : гидов лавки
-vh tl : гидов лавки
-eee obi : гидов лавки
+740 7 bl : гидов лавки
+226 713 4 : гидов лавки
+vh20 tl : гидов лавки
+220eee obi : гидов лавки
  alr : гидов лавки
-a ae cet : гидов лавки
+20a0 ae cet : гидов лавки
  : гидов лавки
 to byes : гидов лавки
  : гидов лавки
-b a : гидов лавки
+7b a4 : гидов лавки
 thar na bi : гидов лавки
  : гидов лавки
-ers fowa napi so : гидов лавки
-ho  ry yahks  : гидов лавки
+ers fowa8 napi so : гидов лавки
+ho 8 ry yahks 2 : гидов лавки
 igh nap kii : гидов лавки
-gba  biv : гидов лавки
-geil : гидов лавки
-ba nmc eid : гидов лавки
-ec b : гидов лавки
-b nagiie : гидов лавки
+gba 710 biv : гидов лавки
+120geil : гидов лавки
+ba nm7c eid : гидов лавки
+ec 7b : гидов лавки
+b22 nagiie : гидов лавки
 gane na ax : гидов лавки
 ee bnd oul : гидов лавки
 sees nasil : гидов лавки
@@ -449,4 +449,4 @@ tvacb nasep ae : гидов лавки
 sans noonoe ee al : гидов лавки
 pene nasilbe al : гидов лавки
 sas nasalr : гидов лавки
-Среднее количество совпадающих символов на метку: 1.0316
+Среднее количество совпадающих символов на метку: 0.0337
