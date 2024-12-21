@@ -4,9 +4,13 @@ import pytesseract as tes
 from jiwer import wer
 from collections import Counter
 import cv2
+import re
 
 tes.pytesseract.tesseract_cmd = (r"C:\Users\DaaNIK\Desktop\dataset1\tesseract.exe")
 
+def clean_text(text):
+    text = re.sub(r'[^a-zA-Zа-яА-Я\s]', '', text)
+    return text.lower()
 
 def augmentation(ds_dir):
     images = os.listdir(f"{ds_dir}")
@@ -69,7 +73,7 @@ def test_recognition(rec_type, val_type, ds_dir):
                 text = tes.image_to_string(img, lang="rus+eng")
                 print(os.path.splitext(name)[0])
                 # Запоминаем текст для текущего изображения
-                res[os.path.splitext(name)[0]] = str(text).replace("\n", "")
+                res[os.path.splitext(name)[0]] = clean_text(str(text).replace("\n", ""))
 
     if rec_type == "augment":
         for name in images:
@@ -111,7 +115,10 @@ def test_recognition(rec_type, val_type, ds_dir):
                 most_common_text = counted.most_common(1)[0][0] if counted else ""
 
                 # Запоминаем текст для текущего изображения
-                res[img_number] = str(most_common_text).replace("\n", "")
+                res[img_number] = clean_text(str(most_common_text).replace("\n", ""))
+
+
+
     count_correct = 0
     match_count = 0
     # Оценка точности
@@ -149,6 +156,5 @@ def test_recognition(rec_type, val_type, ds_dir):
 
 
 # Пример вызова функции
-# test_recognition("augment", "num", "dataset")
 # augmentation("dataset")
-test_recognition("str", "accuracy", "dataset2")
+test_recognition("str", "num", "dataset2")
