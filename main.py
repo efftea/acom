@@ -15,22 +15,27 @@ def clean_text(text):
 
 def augmentation(ds_dir):
     images = os.listdir(f"{ds_dir}")
-    for name in images:
-        if name.endswith(('.png', '.jpg', '.jpeg')):
-            image = cv2.imread(f"{ds_dir}/{name}")
-            for angle in range(-20, 21):
-                (h, w) = image.shape[:2]
-                center = (w // 2, h // 2)
-                M = cv2.getRotationMatrix2D(center, angle, 1.0)
-                cos = np.abs(M[0, 0])
-                sin = np.abs(M[0, 1])
-                new_w = int((h * sin) + (w * cos))
-                new_h = int((h * cos) + (w * sin))
-                M[0, 2] += new_w / 2 - center[0]
-                M[1, 2] += new_h / 2 - center[1]
-                rotated_image = cv2.warpAffine(image, M, (new_w, new_h))
-                str_im = str(name[:-4]) + "+" + str(angle)
-                cv2.imwrite(f"dataset2/{str_im}.jpg", rotated_image)
+    with open('dataset3/test/test.csv', 'w', encoding='utf-8') as file:
+        for name in images:
+            labels = load_labels_from_file("dataset/ds.txt")
+            if name.endswith(('.png', '.jpg', '.jpeg')):
+                image = cv2.imread(f"{ds_dir}/{name}")
+                for angle in range(1, 5):
+                    (h, w) = image.shape[:2]
+                    center = (w // 2, h // 2)
+                    M = cv2.getRotationMatrix2D(center, angle, 1.0)
+                    cos = np.abs(M[0, 0])
+                    sin = np.abs(M[0, 1])
+                    new_w = int((h * sin) + (w * cos))
+                    new_h = int((h * cos) + (w * sin))
+                    M[0, 2] += new_w / 2 - center[0]
+                    M[1, 2] += new_h / 2 - center[1]
+                    rotated_image = cv2.warpAffine(image, M, (new_w, new_h))
+                    str_im = str(name[:-4]) + "+" + str(angle)
+                    print(f"dataset3/test/{str_im}.jpg")
+                    n = labels[name[:-4]]
+                    file.write(f"{str_im}.jpg, " + f"{n}" + '\n')
+                    cv2.imwrite(f"dataset3/test/{str_im}.jpg", rotated_image)
 
 
 def load_labels_from_file(file_path):
@@ -128,8 +133,21 @@ def test_recognition(rec_type, val_type, ds_dir):
 
                 text_combined = ' '.join(results).replace("\n", "")
 
-
                 res[os.path.splitext(name)[0]] = clean_text(text_combined)
+
+    elif rec_type == "myEasyOCR":
+        reader = easyocr.Reader(['ru'], gpu=True, model_storage_directory='EasyOCR/trainer/saved_models/custom',
+                                user_network_directory='EasyOCR/trainer/config_files',
+                                recog_network='custom')
+        for name in images:
+            if name.endswith(('.png', '.jpg', '.jpeg')):
+                img_path = os.path.join(ds_dir, name)
+                print(name)
+                results = reader.readtext(img_path, detail=0, paragraph=True)
+
+                text_combined = ' '.join(results).replace("\n", "")
+                res[os.path.splitext(name)[0]] = clean_text(text_combined)
+
 
     count_correct = 0
     match_count = 0
@@ -171,4 +189,4 @@ def test_recognition(rec_type, val_type, ds_dir):
 
 # Пример вызова функции
 # augmentation("dataset")
-test_recognition("easyOCR", "num", "dataset2")
+test_recognition("myEasyOCR", "num", "dataset2")
